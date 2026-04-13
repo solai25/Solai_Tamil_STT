@@ -40,8 +40,8 @@ This will automatically:
 ### 1. Clone Repository
 
 ```
-git clone https://github.com/your-username/tamil-stt-app.git
-cd tamil-stt-app
+git clone https://github.com/solai25/Solai_Tamil_STT.git
+cd Solai_Tamil_STT
 ```
 
 ---
