@@ -2,10 +2,7 @@
 
 A simple and powerful local Speech-to-Text application for Tamil & English using Whisper models.
 
----
-
 ## 🚀 Features
-
 * 🎧 Audio to Text (Tamil & English)
 * 📂 Batch folder transcription
 * ⚡ GPU acceleration (Auto detected)
@@ -13,7 +10,6 @@ A simple and powerful local Speech-to-Text application for Tamil & English using
 * 🔒 Fully offline (privacy safe)
 * 📝 Clean preview UI
 
----
 
 ## ⚡ One-Click Setup (Recommended)
 
@@ -26,14 +22,12 @@ One-Click-Install.bat
 ```
 
 This will automatically:
-
 * Detect your GPU 🧠
 * Install correct PyTorch (CUDA / CPU)
 * Install all required dependencies 📦
 * Download models 🤖
 * Launch the app 🚀
 
----
 
 ## 🛠️ Manual Installation (Step-by-Step)
 
@@ -44,16 +38,12 @@ git clone https://github.com/solai25/Solai_Tamil_STT.git
 cd Solai_Tamil_STT
 ```
 
----
-
 ### 2. Create Virtual Environment
 
 ```
 python -m venv venv
 venv\Scripts\activate
 ```
-
----
 
 ### 3. Run Smart Installer
 
@@ -68,7 +58,6 @@ python setup.py
 * Install dependencies
 * Download models
 
----
 
 ### 4. Run the App
 
@@ -82,7 +71,6 @@ Open in browser:
 http://127.0.0.1:7860
 ```
 
----
 
 ## 📥 Models Used
 
@@ -94,8 +82,6 @@ http://127.0.0.1:7860
 ### 🔹 OpenAI Whisper
 
 * https://huggingface.co/openai/whisper-medium
-
----
 
 ## 📁 Project Structure
 
@@ -110,8 +96,6 @@ Tamil-STT-App/
 └── output/
 ```
 
----
-
 ## 📌 Usage
 
 1. Select model
@@ -119,15 +103,11 @@ Tamil-STT-App/
 3. Click **Start**
 4. View transcription
 
----
-
 ## ⚠️ Notes
 
 * First run may take time (model download ~1–3GB)
 * GPU recommended for faster performance
 * Works fully offline after setup
-
----
 
 ## 🙏 Credits
 
@@ -139,7 +119,5 @@ Tamil-STT-App/
 
 * HuggingFace Transformers
   https://github.com/huggingface/transformers
-
----
 
 Made with ❤️ for Tamil AI community

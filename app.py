@@ -12,6 +12,8 @@ from transformers import pipeline
 MODELS_ROOT = "./models"
 OUTPUT_DIR = "./output"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+README_PATH = os.path.join(BASE_DIR, "README.md")
 
 CURRENT_PIPE = None
 CURRENT_MODEL_PATH = None
@@ -20,6 +22,15 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 os.makedirs(MODELS_ROOT, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+# Read README.md content safely with UTF-8 encoding if it exists
+readme_content = "### 📄 Documentation\n`README.md` file was not found in the project root directory."
+if os.path.exists(README_PATH):
+    try:
+        with open(README_PATH, "r", encoding="utf-8") as f:
+            readme_content = f.read()
+    except Exception as e:
+        readme_content = f"### ⚠️ Error Loading Documentation\nFailed to parse `README.md` correctly: {str(e)}"
 
 # =========================
 # MODEL MANAGEMENT
@@ -43,7 +54,7 @@ def load_model(model_name):
             task="automatic-speech-recognition",
             model=model_path,
             device=0 if DEVICE == "cuda" else -1,
-            torch_dtype=torch.float16 if DEVICE == "cuda" else torch.float32,
+            dtype=torch.float16 if DEVICE == "cuda" else torch.float32,
             chunk_length_s=30,
             stride_length_s=5,
             batch_size=8
@@ -145,16 +156,20 @@ def build_ui():
 
         gr.Markdown("## 📝 Transcription Preview")
         output_text = gr.Markdown()
-
+            
         with gr.Row():
             submit_btn = gr.Button("🚀 Start", variant="primary")
             clear_btn = gr.Button("🧹 Clear")
-
+            
         submit_btn.click(
             fn=transcribe,
             inputs=[audio_input, folder_input, model_dropdown, lang_dropdown],
             outputs=output_text
         )
+        
+        # DOCUMENTATION
+        with gr.Tab("📄 Studio Guide & Docs"):
+            gr.Markdown(readme_content)
 
         clear_btn.click(lambda: "", None, output_text)
 
@@ -162,4 +177,5 @@ def build_ui():
 
 
 if __name__ == "__main__":
-    build_ui().launch(inbrowser=True, theme=gr.themes.Soft())
+    app = build_ui()
+    app.launch(server_name="127.0.0.1", server_port=7861, inbrowser=True, theme=gr.themes.Soft())
