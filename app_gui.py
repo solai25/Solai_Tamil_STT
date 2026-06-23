@@ -102,6 +102,11 @@ class App(QWidget):
         self.btn_folder.clicked.connect(self.load_folder)
         layout.addWidget(self.btn_folder)
 
+        # ADD THIS NEW BUTTON:
+        self.btn_remove = QPushButton("🗑️ Remove Selected")
+        self.btn_remove.clicked.connect(self.remove_selected)
+        layout.addWidget(self.btn_remove)
+
         self.btn_start = QPushButton("🚀 Start Transcription")
         self.btn_start.clicked.connect(self.start_transcription)
         layout.addWidget(self.btn_start)
@@ -153,6 +158,25 @@ class App(QWidget):
             if f not in self.files:
                 self.files.append(f)
                 self.file_list.addItem(f)
+
+    # ADD THIS NEW FUNCTION:
+    def remove_selected(self):
+        # Get a list of all currently selected items in the UI
+        selected_items = self.file_list.selectedItems()
+        
+        if not selected_items:
+            return # Nothing is selected, do nothing
+            
+        for item in selected_items:
+            file_path = item.text()
+            
+            # 1. Remove from our internal Python list
+            if file_path in self.files:
+                self.files.remove(file_path)
+                
+            # 2. Remove from the visual QListWidget
+            row = self.file_list.row(item)
+            self.file_list.takeItem(row)
 
     def start_transcription(self):
         if not self.files:

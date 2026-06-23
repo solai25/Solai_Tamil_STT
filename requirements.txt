@@ -3,3 +3,4 @@ torch
 torchaudio
 gradio
 transformers
+PySide6

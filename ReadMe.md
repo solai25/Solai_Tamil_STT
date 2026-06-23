@@ -41,8 +41,8 @@ cd Solai_Tamil_STT
 ### 2. Create Virtual Environment
 
 ```
-python -m venv venv
-venv\Scripts\activate
+python -m venv .venv
+.venv\Scripts\activate
 ```
 
 ### 3. Run Smart Installer
@@ -76,12 +76,12 @@ http://127.0.0.1:7860
 
 ### 🔹 Tamil Whisper Models
 
-* https://huggingface.co/vasista22/whisper-tamil-small
-* https://huggingface.co/vasista22/whisper-tamil-medium
+* https://huggingface.co/vasista22/whisper-tamil-small (Old Model fine Tuned from V1)
+
 
 ### 🔹 OpenAI Whisper
 
-* https://huggingface.co/openai/whisper-medium
+* https://huggingface.co/openai/whisper-large-v3/tree/main (@2026 its best at Tamil Lang. Manually Download Due to unwanted extra model format present in this repo)
 
 ## 📁 Project Structure
 
@@ -113,6 +113,7 @@ Tamil-STT-App/
 
 * OpenAI Whisper
   https://huggingface.co/openai/whisper-medium
+  https://huggingface.co/openai/whisper-large-v3
 
 * Tamil Whisper Models by Vasista
   https://huggingface.co/vasista22
